@@ -1,3 +1,7 @@
+
+
+https://github.com/user-attachments/assets/fefdb041-dda5-4ba5-a931-9f23b5e3768c
+
 # Anna's Lab Notebook
 
 
@@ -48,9 +52,9 @@ I was unable to print the models because Design Reviews were still taking place 
 ### Accomplishments: 
 I received approval from a TA to use the 3D printer and began the printing process. I encountered a minor issue with the SD card, which needed to be formatted correctly for the printer to recognize it. Fortunately, I was able to resolve this using the printer's built-in formatting option.
 
-After resolving the issue, I was able to proceed with printing the models. A timelapse of the printing process is linked below.
+After resolving the issue, I was able to proceed with printing the models. A of the printing process is linked below.
 
-<video src="3D-Print/timelapse.mp4" width="50%" controls></video>
+https://github.com/user-attachments/assets/e5601daa-3ff7-4bc9-b9ca-7f1c021ac2bc
 
 
 
