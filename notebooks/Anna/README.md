@@ -50,10 +50,8 @@ I received approval from a TA to use the 3D printer and began the printing proce
 
 After resolving the issue, I was able to proceed with printing the models. A timelapse of the printing process is linked below.
 
-<a href="3D-Print/Printing_Timelapse.mp4">
-  <img src="3D-Print/Timelapse_thumbnail.jpg" alt="Watch the 3D printing timelapse" width="25%">
-</a>
-<-- Click on this image!
+<video src="3D-Print/timelapse.mp4" width="50%" controls></video>
+
 
 
 
