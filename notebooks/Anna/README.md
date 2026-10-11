@@ -1,7 +1,3 @@
-
-
-https://github.com/user-attachments/assets/fefdb041-dda5-4ba5-a931-9f23b5e3768c
-
 # Anna's Lab Notebook
 
 
