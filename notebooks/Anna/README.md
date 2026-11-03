@@ -79,4 +79,55 @@ Finally, I successfully printed the completed dispenser and confirmed that the b
 
 
 
+## 10/12/2026
+
+### Objectives:
+Get the breadboard demo working. 
+
+### Accomplishments:
+
+
+## 10/22/2026
+
+### Objectives:
+Begin backend development
+Think about how to do power conservation
+
+### Accomplishments:
+
+
+## 10/27/2026
+
+### Objectives:
+FastAPI and PostgreSQL tutorial
+
+### Accomplishments:
+Skimmed through the tutorial below to get a better feel for how it works:
+https://www.youtube.com/watch?v=7AMjmCTumuo&list=PL-osiE80TeTsak-c-QsVeg0YYG_0TeyXI&index=4 
+
+
+
+## 11/1/2026
+
+### Objectives
+
+
+### Accomplishments
+Revisiting power consumption:
+We were thinking about designing it so that the box only updates the database when the app requests an update. But the thing is, keeping the lorawan in the receiving state and listening for requests would drain battery. I don't know how fast it would be though, maybe you can provide some input on this, but from what I can tell it's significant. 
+
+Technically, it would save more power if we just woke up the sensors to check the product amount every ten minutes or so rather than waking up the lorawan to check if there are any outgoing requests from the app. The problem is this wouldn't reach our timing requirement defined in our project docs. I was wondering what you guys think about this.
+
+Maybe to satisfy design requirements, we could use the button on the PCB itself as Erin suggested earlier to signify when a product is taken or refilled. That would allow us to wake the lorawan only when the button is pressed and would meet timing constraints much easier. Also, we can just mention in our demo that a different mechanical implementation in the future would be ideal.
+
+## 11/2/2026
+
+### Objectives 
+Get the PostgreSQL database running with FastAPI, and show it work in the /docs page. 
+
+### Accomplishments
+I'm going for some sort of five minute cooldown timer on the esp32 that would make everything go to sleep, including the esp32. The esp32 would wake up after 5 minutes, turn on the sensors measure the products with tof and compare the amount with the cached data (aka how much product it measured last time). If the amount differs, then it would turn on WiFi (Lorawan in the future) and sent updated data. If the amount doesn't differ is goes to sleep and never turns the WiFi on.
+
+This should theoretically save us a lot of battery since keeping WiFi (or Lorawan) on is apparently very draining.
+
 

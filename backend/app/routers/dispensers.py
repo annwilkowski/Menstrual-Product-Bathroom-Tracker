@@ -6,8 +6,8 @@ from fastapi import APIRouter, Depends, HTTPException, Query
 from sqlalchemy import select
 from sqlalchemy.orm import Session
 from ..database import get_db
-from ..models import Dispenser, MeasurementRequest
-from ..schemas import DispenserOut, RequestOut
+from ..models import Dispenser
+from ..schemas import DispenserOut
 
 # connects to main.py
 router = APIRouter(prefix='/dispensers', tags=['dispensers'])
@@ -25,3 +25,10 @@ def distance_km(a, b, c, d):
 def nearby(lat: float = Query(ge=-90, le=90), lon: float = Query(ge=-180, le=180), db: Session = Depends(get_db)):
     boxes = db.scalars(select(Dispenser)).all()
     return sorted(boxes, key=lambda x: distance_km(lat, lon, x.latitude, x.longitude))[:3]
+
+# returns all dispensers sorted by id order
+@router.get("/all", response_model=list[DispenserOut])
+def get_all_dispensers(db: Session = Depends(get_db)):
+    return db.scalars(
+        select(Dispenser).order_by(Dispenser.id)
+    ).all()

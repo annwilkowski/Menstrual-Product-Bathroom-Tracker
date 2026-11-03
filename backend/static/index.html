@@ -1,0 +1,77 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dispenser Inventory</title>
+    <style>
+        body {
+            font-family: Arial;
+            margin: 40px;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <h1>Dispenser Inventory</h1>
+    <button onclick="loadDispensers()">Refresh</button>
+
+    <table> <!-- table headers -->
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Building</th>
+                <th>Latitude</th>
+                <th>Longitude</th>
+                <th>Pads</th>
+                <th>Tampons</th>
+                <th>Last Updated</th>
+            </tr>
+        </thead>
+        <tbody id="tableBody"></tbody>
+    </table>
+
+    <script>
+        async function loadDispensers() {
+            const response = await fetch("/dispensers/all");
+            const dispensers = await response.json();
+            const table = document.getElementById("tableBody");
+
+            table.innerHTML = "";
+
+            dispensers.forEach(d => {
+                const row = document.createElement("tr");
+
+                [
+                    d.id,
+                    d.name,
+                    d.building,
+                    d.latitude,
+                    d.longitude,
+                    d.pad_count ?? "N/A",
+                    d.tampon_count ?? "N/A",
+                    d.measured_at ?? "Never"
+                ].forEach(value => {
+                    const cell = document.createElement("td");
+                    cell.textContent = value;
+                    row.appendChild(cell);
+                });
+
+                table.appendChild(row);
+            });
+        }
+
+        loadDispensers();
+    </script>
+</body>
+</html>
