@@ -8,14 +8,12 @@ from sqlalchemy.orm import Session
 
 from ..database import get_db, settings
 from ..models import Dispenser
+from ..schemas import MeasurementIn
+
+# TESTING
+# from time import perf_counter
 
 router = APIRouter(prefix="/devices", tags=["devices"])
-
-# data validation
-class MeasurementIn(BaseModel):
-    pad_count: int = Field(ge=0) # count >= 0
-    tampon_count: int = Field(ge=0)
-
 
 @router.post("/{dispenser_id}/measurement")
 def upload_measurement(
@@ -24,6 +22,9 @@ def upload_measurement(
     x_device_key: str = Header(),
     db: Session = Depends(get_db),
 ):
+    # TESTING 
+    # start_time = perf_counter()
+    
     # Authenticate the ESP32
     if x_device_key != settings.device_api_key:
         raise HTTPException(401, "Invalid device API key")
@@ -40,5 +41,10 @@ def upload_measurement(
     dispenser.measured_at = datetime.now(timezone.utc)
 
     db.commit()
+
+    # TESTING
+    # end_time = perf_counter()
+    # elapsed_time = end_time - start_time
+    # print(f"Database update time: {elapsed_time:.6f} seconds")
 
     return {"status": "success"}
