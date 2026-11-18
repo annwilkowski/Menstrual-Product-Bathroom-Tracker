@@ -15,8 +15,6 @@ dispensers
 id	  name	             pad_count	  tampon_count	  measured_at
 1	  ECEB 1st Floor     12	          8	              17:00
 2	  ECEB 2nd Floor     5	          3	              16:50
-Each row represents one physical dispenser. 
-Stores only the latest product counts, rather than a full measurement history.
 '''
 class Dispenser(Base):
     __tablename__ = 'dispensers'
