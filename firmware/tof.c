@@ -68,13 +68,11 @@ void loop()
     if((item_count[0] != prev_item_count[0])){
         Serial.print("Pad stack height: ");
         Serial.println(item_count[0]);
-        // Serial.print("\n")
     }
 
     if((item_count[1] != prev_item_count[1])){
         Serial.print("Tampon stack height: ");
         Serial.println(item_count[1]);
-        // Serial.print("\n");
     }
     if (sensor.timeoutOccurred()) { Serial.print(" TIMEOUT"); }
     
